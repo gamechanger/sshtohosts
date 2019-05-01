@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -euo pipefail
+
+function random_word () {
+    echo $(shuf -n 1 /usr/share/dict/words | tr '[:upper:]' '[:lower:]')
+}
+
+function random_words () {
+    echo "$(random_word)-$(random_word)"
+}
+
+layout="$(random_words)"
+layout_file="$HOME/.teamocil/$layout.yml"
+hosts=$(cat -)
+
+cat > $layout_file << END
+windows:
+  - name: SSH To Hosts
+    root: ~
+    layout: 3_columns
+    panes:
+END
+
+for host in $hosts
+do
+    echo -e "      - commands:\n        - ssh $host" >> $layout_file
+done
+
+cat $layout_file
+itermocil $layout
+rm $layout_file
