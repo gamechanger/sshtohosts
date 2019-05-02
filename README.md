@@ -1,14 +1,23 @@
 # SSH to Hosts
 
-Install [`itermocil`](https://github.com/TomAnthony/itermocil):
+SSH to multiple hosts in different terminal windows
+via [`itermocil`](https://github.com/TomAnthony/itermocil)
+
+## Install
 
 ```
+brew install gamechanger/brews/sshtohosts
 brew install TomAnthony/brews/itermocil
 mkdir ~/.teamocil/
 ```
 
-Then do things like:
+## Usage
+
+Hosts are provided via `stdin` which makes it easy to use with pipes.
+Useful with infrastructure toolks like
+[`awsprey`](https://github.com/agamdua/awsprey).
 
 ```
-awsprey list push:production | ./sshtohosts.sh
+cat hosts.txt | sshtohosts
+awsprey list service:production | sshtohosts
 ```
