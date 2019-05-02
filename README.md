@@ -7,7 +7,6 @@ via [`itermocil`](https://github.com/TomAnthony/itermocil)
 
 ```
 brew install gamechanger/brews/sshtohosts
-brew install TomAnthony/brews/itermocil
 mkdir ~/.teamocil/
 ```
 

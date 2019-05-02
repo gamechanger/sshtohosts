@@ -3,7 +3,7 @@
 set -euo pipefail
 
 function random_word () {
-    echo $(shuf -n 1 /usr/share/dict/words | tr '[:upper:]' '[:lower:]')
+    echo $(gshuf -n 1 /usr/share/dict/words | tr '[:upper:]' '[:lower:]')
 }
 
 function random_words () {
